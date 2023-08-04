@@ -11,8 +11,9 @@ import org.springframework.transaction.event.TransactionalEventListener;
 public class TicketOrderFailedListener {
 
     private final TicketService ticketService;
+
     @TransactionalEventListener(phase = TransactionPhase.AFTER_ROLLBACK)
-    public void onOrderCompletedEvent(OrderCompletedEvent event){
+    public void onOrderCompletedEvent(OrderCompletedEvent event) {
         ticketService.createTicket(event.getOrder());
     }
 }

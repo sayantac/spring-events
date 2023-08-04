@@ -11,24 +11,22 @@ import org.springframework.transaction.event.TransactionalEventListener;
 
 @Component
 @RequiredArgsConstructor
-public class EmailListeners
-{
+public class EmailListeners {
     private final EmailService emailService;
 
     @EventListener
-    public void onRegisterEvent(CustomerRegisteredEvent event)
-    {
+    public void onRegisterEvent(CustomerRegisteredEvent event) {
         emailService.sendRegisterEmail(event.getCustomer());
     }
 
     @EventListener
-    public void onCustomerRemovedEvent(CustomerRemovedEvent event)
-    {
+    public void onCustomerRemovedEvent(CustomerRemovedEvent event) {
         emailService.sendCustomerRemovedEmail(event.getCustomer());
     }
+
     @EventListener
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
-    public void onOrderCompleted(OrderCompletedEvent event){
+    public void onOrderCompleted(OrderCompletedEvent event) {
         emailService.sendOrderEmail(event.getOrder());
     }
 }

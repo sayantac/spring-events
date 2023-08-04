@@ -11,12 +11,14 @@ import org.springframework.stereotype.Component;
 public class PromotionListeners {
 
     private final PromotionService promotionService;
+
     @EventListener(condition = "#event.customer.newsletter")
-    public void onRegisteredEvent(CustomerRegisteredEvent event){
+    public void onRegisteredEvent(CustomerRegisteredEvent event) {
         promotionService.applyPromotion(event.getCustomer());
     }
+
     @EventListener
-    public void onOrderCompleted(OrderCompletedEvent event){
+    public void onOrderCompleted(OrderCompletedEvent event) {
         promotionService.calculateRewardPoints(event.getOrder());
     }
 }

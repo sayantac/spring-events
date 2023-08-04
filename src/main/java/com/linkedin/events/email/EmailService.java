@@ -7,19 +7,16 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class EmailService
-{
-    public void sendRegisterEmail(Customer customer)
-    {
+public class EmailService {
+    public void sendRegisterEmail(Customer customer) {
         log.info("Sending registration email to customer {}", customer);
     }
 
-    public void sendCustomerRemovedEmail(Customer customer)
-    {
+    public void sendCustomerRemovedEmail(Customer customer) {
         log.info("Sending removed email for customer {}", customer);
     }
-    public void sendOrderEmail(Order order)
-    {
+
+    public void sendOrderEmail(Order order) {
         log.info("Sending email for order {}", order);
     }
 }

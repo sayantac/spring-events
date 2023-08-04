@@ -11,15 +11,13 @@ import static com.linkedin.events.order.Order.OrderStatus.COMPLETED;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class OrderService
-{
+public class OrderService {
     private final OrderRepository orderRepository;
 
     private final ApplicationEventPublisher publisher;
 
     @Transactional
-    public void placeOrder(Order order)
-    {
+    public void placeOrder(Order order) {
         log.info("Placing and order {}", order);
         order.setStatus(COMPLETED);
         orderRepository.save(order);

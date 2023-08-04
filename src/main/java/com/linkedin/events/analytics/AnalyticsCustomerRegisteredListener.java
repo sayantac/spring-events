@@ -14,7 +14,7 @@ public class AnalyticsCustomerRegisteredListener {
 
     @EventListener
     @Async
-    public void onRegisterEvent(CustomerRegisteredEvent event){
+    public void onRegisterEvent(CustomerRegisteredEvent event) {
         analyticsService.registerNewCustomer(event.getCustomer());
     }
 }
